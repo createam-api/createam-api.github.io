@@ -21,7 +21,7 @@ public class HeartbeatService {
     private LocalDateTime lastHeartbeat = LocalDateTime.now();
     private AtomicInteger counter = new AtomicInteger(0);
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 10000)
     public LocalDateTime updateAndGetLast() {
         LocalDateTime temp = lastHeartbeat;
         lastHeartbeat = LocalDateTime.now();
