@@ -67,33 +67,25 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
-(function webpackMissingModule() { throw new Error("Cannot find module \"run\""); }());
-(function webpackMissingModule() { throw new Error("Cannot find module \"dev\""); }());
+var $ = __webpack_require__(1);
 
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__(2);
-
-__webpack_require__(3);
+__webpack_require__(2);
 
 angular.module('createam', []).controller('HelloController', function ($scope, $http) {
   $http({
     method: 'GET',
-    url: 'https://createam.herokuapp.com/hello'
+    url: 'https://createam-api.herokuapp.com/hello'
   }).then(function successCallback(response) {
     $scope.hello = response.data;
   }, function errorCallback(response) {
     $scope.hello.id = '-1';
     $scope.hello.message = 'no message available';
+    $scope.hello.heartbeats = 'no heartbeats available';
   });
 });
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -9108,15 +9100,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 });
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(4);
+__webpack_require__(3);
 
 module.exports = angular;
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports) {
 
 /**
