@@ -11,4 +11,6 @@ public class HelloMessage {
 
     private Integer id;
     private String message;
+    private Integer heartbeats;
+
 }
