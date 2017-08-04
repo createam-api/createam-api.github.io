@@ -54,7 +54,7 @@ public class MainController {
 
     private String prepareUptime() {
         Long uptime = ManagementFactory.getRuntimeMXBean().getUptime();
-        return String.format("%d min, %d sec",
+        return String.format("%d min %d sec",
                 TimeUnit.MILLISECONDS.toMinutes(uptime),
                 TimeUnit.MILLISECONDS.toSeconds(uptime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(uptime))
         );
