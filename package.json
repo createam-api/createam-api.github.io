@@ -1,0 +1,27 @@
+{
+  "name": "createam-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server  --content-base=./ --config ./webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://createam-api@bitbucket.org/createam-api/createam.git"
+  },
+  "author": "Łukasz Włódarczyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://createam-api@bitbucket.org/createam-api/createam.git/issues"
+  },
+  "homepage": "https://createam-api@bitbucket.org/createam-api/createam.git#readme",
+  "dependencies": {
+    "angular": "^1.6.5",
+    "babel-core": "^7.0.0-alpha.12",
+    "babel-loader": "^7.1.1",
+    "jquery": "^3.1.0",
+    "webpack": "^3.0.0"
+  }
+}
