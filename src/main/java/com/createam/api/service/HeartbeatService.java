@@ -30,10 +30,8 @@ public class HeartbeatService {
         return temp;
     }
 
-
     public Integer getCount() {
         lastHeartbeat = LocalDateTime.now();
         return counter.incrementAndGet();
     }
-
 }

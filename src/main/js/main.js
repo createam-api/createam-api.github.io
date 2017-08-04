@@ -12,6 +12,6 @@ angular.module('createam', [])
     $scope.hello.id = '-1';
     $scope.hello.message = 'no message available';
     $scope.hello.heartbeats = 'no heartbeats available';
-
+    $scope.hello.uptime = 'no uptime available';
   });
 });
