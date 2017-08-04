@@ -10,9 +10,12 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
@@ -32,10 +35,12 @@ public class MainController {
     @GetMapping(value = "/hello", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     HelloMessage sayHello(HttpServletRequest request) {
+
         return HelloMessage.builder()
                 .id(COUNTER.incrementAndGet())
                 .message("hello " + request.getRemoteHost())
                 .heartbeats(heartbeatService.getCount())
+                .uptime(prepareUptime())
                 .build();
     }
 
@@ -45,6 +50,15 @@ public class MainController {
         LocalDateTime lastHeartbeat = heartbeatService.updateAndGetLast();
         log.info("Heartbeat received from " + request.getRemoteAddr()
                 + "! Last heartbeat - " + lastHeartbeat.toString());
+    }
+
+    private String prepareUptime() {
+        Long uptime = ManagementFactory.getRuntimeMXBean().getUptime();
+        return String.format("%d min, %d sec",
+                TimeUnit.MILLISECONDS.toMinutes(uptime),
+                TimeUnit.MILLISECONDS.toSeconds(uptime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(uptime))
+        );
+
     }
 
 }

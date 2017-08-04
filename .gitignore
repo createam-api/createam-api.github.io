@@ -23,7 +23,7 @@ hs_err_pid*
 
 node_modules/*
 target/*
-.idea/* 
+.idea/*
 api.iml
 .idea/.name
 .idea/compiler.xml
