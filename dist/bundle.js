@@ -71,18 +71,16 @@ var $ = __webpack_require__(1);
 
 __webpack_require__(2);
 
-var type = __webpack_require__(4);
-
 angular.module('createam', []).controller('HelloController', function ($scope, $http) {
   $http({
     method: 'GET',
-    url: 'https://createam-api.herokuapp.com/hello'
+    url: 'https://createam-api.herokuapp.com/heartbeat'
   }).then(function successCallback(response) {
     $scope.hello = response.data;
   }, function errorCallback(response) {
-    $scope.hello.id = '-1';
     $scope.hello.message = 'no message available';
     $scope.hello.heartbeats = 'no heartbeats available';
+    $scope.hello.uptime = 'no uptime available';
   });
 });
 
@@ -27044,119 +27042,6 @@ return ctrl.$isEmpty(viewValue)||isUndefined(regexp)||regexp.test(viewValue);};}
 if(window.console){console.log('WARNING: Tried to load angular more than once.');}return;}// try to bind to jquery now so that one can write jqLite(fn)
 // but we will rebind on bootstrap again.
 bindJQuery();publishExternalAPI(angular);angular.module("ngLocale",[],["$provide",function($provide){var PLURAL_CATEGORY={ZERO:"zero",ONE:"one",TWO:"two",FEW:"few",MANY:"many",OTHER:"other"};function getDecimals(n){n=n+'';var i=n.indexOf('.');return i==-1?0:n.length-i-1;}function getVF(n,opt_precision){var v=opt_precision;if(undefined===v){v=Math.min(getDecimals(n),3);}var base=Math.pow(10,v);var f=(n*base|0)%base;return{v:v,f:f};}$provide.value("$locale",{"DATETIME_FORMATS":{"AMPMS":["AM","PM"],"DAY":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"ERANAMES":["Before Christ","Anno Domini"],"ERAS":["BC","AD"],"FIRSTDAYOFWEEK":6,"MONTH":["January","February","March","April","May","June","July","August","September","October","November","December"],"SHORTDAY":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"SHORTMONTH":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"STANDALONEMONTH":["January","February","March","April","May","June","July","August","September","October","November","December"],"WEEKENDRANGE":[5,6],"fullDate":"EEEE, MMMM d, y","longDate":"MMMM d, y","medium":"MMM d, y h:mm:ss a","mediumDate":"MMM d, y","mediumTime":"h:mm:ss a","short":"M/d/yy h:mm a","shortDate":"M/d/yy","shortTime":"h:mm a"},"NUMBER_FORMATS":{"CURRENCY_SYM":"$","DECIMAL_SEP":".","GROUP_SEP":",","PATTERNS":[{"gSize":3,"lgSize":3,"maxFrac":3,"minFrac":0,"minInt":1,"negPre":"-","negSuf":"","posPre":"","posSuf":""},{"gSize":3,"lgSize":3,"maxFrac":2,"minFrac":2,"minInt":1,"negPre":"-\u00a4","negSuf":"","posPre":"\u00a4","posSuf":""}]},"id":"en-us","localeID":"en_US","pluralCat":function(n,opt_precision){var i=n|0;var vf=getVF(n,opt_precision);if(i==1&&vf.v==0){return PLURAL_CATEGORY.ONE;}return PLURAL_CATEGORY.OTHER;}});}]);jqLite(function(){angularInit(window.document,bootstrap);});})(window);!window.angular.$$csp().noInlineStyle&&window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(module) {/** @license MIT License (c) copyright Pieter Vanderwerff */
-
-/**
- * typejs
- * Type creation system (prototypal inheritance)
- *
- * Licensed under the MIT License at:
- * http://pietervanderwerff.mit-license.org/
- *
- * @version 0.1.0
- */
-//
-// Setup environment wrappers
-//
-(function (root, factory) {
-  // Set global name
-  var PROJECT_NAME = 'typejs';
-
-  if (true) {
-    // CommonJS
-    factory(module);
-  } else if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['module'], factory);
-  } else {
-    // Browser globals
-    var mod = {
-      exports: {}
-    };
-    factory(mod);
-    root[PROJECT_NAME] = mod.exports;
-  }
-})(this, function (module) {
-  //
-  // Project Code
-  //
-  var type; // Setup options
-
-  CONSTRUCTOR_NAME = 'initialize'; //
-  // Type creator
-  //
-
-  type = function (obj) {
-    var base;
-    obj = obj || {}; // Constructor function
-
-    base = function () {
-      if (typeof this[CONSTRUCTOR_NAME] === 'function') {
-        this[CONSTRUCTOR_NAME].apply(this, arguments);
-      }
-    };
-
-    base.prototype = obj; // Create new class inheriting from this class
-
-    base.extend = function (protoProps) {
-      var ctor = function () {},
-          child = type(),
-          name; // Copy over properties
-
-
-      ctor.prototype = base.prototype;
-      child.prototype = new ctor(); // Set properties
-
-      for (name in protoProps) {
-        if (protoProps.hasOwnProperty(name)) {
-          child.prototype[name] = protoProps[name];
-        }
-      }
-
-      return child;
-    };
-
-    return base;
-  }; // Export item
-
-
-  module.exports = type;
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)(module)))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = function (module) {
-  if (!module.webpackPolyfill) {
-    module.deprecate = function () {};
-
-    module.paths = []; // module.parent = undefined by default
-
-    if (!module.children) module.children = [];
-    Object.defineProperty(module, "loaded", {
-      enumerable: true,
-      get: function () {
-        return module.l;
-      }
-    });
-    Object.defineProperty(module, "id", {
-      enumerable: true,
-      get: function () {
-        return module.i;
-      }
-    });
-    module.webpackPolyfill = 1;
-  }
-
-  return module;
-};
 
 /***/ })
 /******/ ]);
