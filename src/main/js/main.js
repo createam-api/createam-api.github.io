@@ -11,7 +11,6 @@ angular.module('createam', [])
   }).then(function successCallback(response) {
     $scope.hello = response.data;
   }, function errorCallback(response) {
-    $scope.hello.id = '-1';
     $scope.hello.message = 'no message available';
     $scope.hello.heartbeats = 'no heartbeats available';
     $scope.hello.uptime = 'no uptime available';
