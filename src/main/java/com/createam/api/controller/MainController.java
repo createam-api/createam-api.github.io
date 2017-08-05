@@ -45,7 +45,7 @@ public class MainController {
     }
 
     @GetMapping("/heartbeat")
-    public @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    public @ResponseStatus(HttpStatus.OK)
     void heartbeat(HttpServletRequest request) {
         LocalDateTime lastHeartbeat = heartbeatService.updateAndGetLast();
         log.info("Heartbeat received from " + request.getRemoteAddr()
