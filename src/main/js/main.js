@@ -1,5 +1,7 @@
 var $ = require("jquery");
 require("angular");
+var type = require('typejs');
+
 
 angular.module('createam', [])
 .controller('HelloController', function($scope, $http) {

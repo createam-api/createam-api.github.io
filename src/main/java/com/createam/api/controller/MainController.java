@@ -45,7 +45,7 @@ public class MainController {
     }
 
     @GetMapping("/heartbeat")
-    public @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    public @ResponseStatus(HttpStatus.OK)
     void heartbeat(HttpServletRequest request) {
         LocalDateTime lastHeartbeat = heartbeatService.updateAndGetLast();
         log.info("Heartbeat received from " + request.getRemoteAddr()
@@ -54,7 +54,7 @@ public class MainController {
 
     private String prepareUptime() {
         Long uptime = ManagementFactory.getRuntimeMXBean().getUptime();
-        return String.format("%d min, %d sec",
+        return String.format("%d min %d sec",
                 TimeUnit.MILLISECONDS.toMinutes(uptime),
                 TimeUnit.MILLISECONDS.toSeconds(uptime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(uptime))
         );
