@@ -71,17 +71,20 @@ var $ = __webpack_require__(1);
 
 __webpack_require__(2);
 
-angular.module('createam', []).controller('HelloController', function ($scope, $http) {
-  $http({
-    method: 'GET',
-    url: 'https://createam-api.herokuapp.com/heartbeat'
-  }).then(function successCallback(response) {
-    $scope.hello = response.data;
-  }, function errorCallback(response) {
-    $scope.hello.message = 'no message available';
-    $scope.hello.heartbeats = 'no heartbeats available';
-    $scope.hello.uptime = 'no uptime available';
-  });
+angular.module('createam', []).controller('HeartbeatController', function ($scope, $http) {
+  setInterval(function () {
+    $http({
+      method: 'GET',
+      url: 'https://createam-api.herokuapp.com/heartbeat'
+    }).then(function successCallback(response) {
+      $scope.heartbeat = response.data;
+    }, function errorCallback(response) {
+      $scope.heartbeat.message = 'no message available';
+      $scope.heartbeat.heartbeats = 'no heartbeats available';
+      $scope.heartbeat.uptime = 'no uptime available';
+    });
+  }, 1000);
+  console.log("Request sent!");
 });
 
 /***/ }),

@@ -45,7 +45,7 @@ public class HeartbeatService {
 
     public Heartbeat generateHeartbeat(HttpServletRequest request) {
         Heartbeat heartbeat =  Heartbeat.builder()
-                .message("♥ beat!")
+                .message("ahoy! I'am alive")
                 .heartbeats(counter.getAndIncrement())
                 .uptime(prepareUptime())
                 .build();
