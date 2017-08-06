@@ -25,6 +25,9 @@ node_modules/*
 target/*
 .idea/*
 api.iml
+
+application-heroku.properties
+
 .idea/.name
 .idea/compiler.xml
 .idea/dbnavigator.xml
