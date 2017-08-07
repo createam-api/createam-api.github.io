@@ -7,9 +7,9 @@
 <body>
 <div ng-controller="HeartbeatController">
     <p>message - {{heartbeat.message}}</p>
-    <p>heartbeats - {{heartbeat.heartbeats}}</p>
+    <p>heartbeats - <span class="heart">{{heartbeat.heartbeats}}</span></p>
     <p>uptime - {{heartbeat.uptime}}</p>
-    <div class="heart">&#x2665;</div>
+    <div class="heart" style ="font-size: 150px;">&#x2665;</div>
 </div>
 </body>
 </html>

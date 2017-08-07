@@ -3,7 +3,6 @@ body {
 }
 
 .heart {
-	font-size: 150px;
 	color: #ED1C24;
 	animation: beat .5s infinite alternate;
 	transform-origin: center;
@@ -13,5 +12,3 @@ body {
 @keyframes beat{
 	to { transform: scale(1.5); }
 }
-
-#FFFFFF
