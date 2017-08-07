@@ -2,13 +2,14 @@ body {
   text-align: center;
 }
 
-.heart {
+.beat {
 	color: #ED1C24;
 	animation: beat .5s infinite alternate;
 	transform-origin: center;
+  display:inline-block
 }
 
 /* Heart beat animation */
 @keyframes beat{
-	to { transform: scale(1.5); }
+	to { transform: scale(1.3); }
 }
