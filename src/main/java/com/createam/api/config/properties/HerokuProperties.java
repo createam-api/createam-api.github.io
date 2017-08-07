@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * Created by lukasz@create.am on 07/08/2017.
  */
 @Component
-@PropertySource("classpath:application-shared.properties")
+@PropertySource("classpath:application-heroku.properties")
 @Getter
 @Setter
 public class HerokuProperties {
