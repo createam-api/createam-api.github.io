@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by lukasz@create.am on 10/08/2017.
  */
-@RestController("/facebook")
+@RestController("/connect")
 public class FacebookController {
 
     private static final Logger log = LoggerFactory.getLogger(FacebookController.class);
@@ -33,7 +33,7 @@ public class FacebookController {
         this.sharedProperties = sharedProperties;
     }
 
-    @GetMapping("/connect") public @ResponseBody
+    @GetMapping("/facebook") public @ResponseBody
     String connect(HttpServletRequest request) {
         log.info("Facebook connection requested from:" + request.getRemoteAddr());
         if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
