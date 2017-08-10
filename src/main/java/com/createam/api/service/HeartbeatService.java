@@ -5,6 +5,7 @@ import com.createam.api.model.Heartbeat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,7 @@ public class HeartbeatService {
         this.sharedProperties = sharedProperties;
     }
 
+    @Profile("heroku")
     @Scheduled(fixedRate = 10000)
     public void sendHeartbeat() {
         new RestTemplate()

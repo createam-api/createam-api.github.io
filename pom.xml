@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.createam</groupId>
-    <artifactId>api</artifactId>
+    <artifactId>createam</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>api</name>
+    <name>createam api</name>
     <description>create.am api project</description>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -27,6 +27,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-facebook</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -55,6 +59,13 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.1.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.196</version>
+            <!--<scope>test</scope>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

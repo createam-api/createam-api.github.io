@@ -99,3 +99,4 @@ api.iml
 .idea/libraries/Maven__org_springframework_spring_web_4_3_9_RELEASE.xml
 .idea/libraries/Maven__org_springframework_spring_webmvc_4_3_9_RELEASE.xml
 .idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml
+/src/main/resources/application-local.properties
