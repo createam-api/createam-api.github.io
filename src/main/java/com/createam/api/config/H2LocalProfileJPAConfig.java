@@ -1,5 +1,7 @@
 package com.createam.api.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -19,6 +21,8 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(basePackages = "com.createam.api.repository")
 public class H2LocalProfileJPAConfig {
 
+    private static final Logger log = LoggerFactory.getLogger(H2LocalProfileJPAConfig.class);
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -26,7 +30,7 @@ public class H2LocalProfileJPAConfig {
         dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
         dataSource.setUsername("sa");
         dataSource.setPassword("sa");
-
+        log.info("H2 datasource prepared!");
         return dataSource;
     }
 }
