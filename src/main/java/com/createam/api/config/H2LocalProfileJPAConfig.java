@@ -11,15 +11,15 @@ import javax.sql.DataSource;
 
 
 /**
- * Created by lwl on 10/08/2017.
+ * Created by lukasz@create.am on 10/08/2017.
  */
+@Profile("local")
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.createam.api.repository")
 public class H2LocalProfileJPAConfig {
 
     @Bean
-    @Profile("local")
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
