@@ -75,7 +75,7 @@ angular.module('createam', []).controller('HeartbeatController', function ($scop
   setInterval(function () {
     $http({
       method: 'GET',
-      url: 'http://createam-api.herokuapp.com/heartbeat'
+      url: 'https://createam-api.herokuapp.com/heartbeat'
     }).then(function successCallback(response) {
       $scope.heartbeat = response.data;
     }, function errorCallback(response) {
