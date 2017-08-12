@@ -84,7 +84,7 @@ angular.module('createam', []).controller('HeartbeatController', function ($scop
       $scope.heartbeat.uptime = 'no uptime available';
     });
     console.log("Request sent!");
-  }, 1000);
+  }, 1500);
 });
 
 /***/ }),

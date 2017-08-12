@@ -1,7 +1,5 @@
 package com.createam.api.config.properties;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -12,13 +10,20 @@ import org.springframework.stereotype.Component;
 
 @Component
 @PropertySource("classpath:application-shared.properties")
-@Getter
-@Setter
 public class SharedProperties {
 
     @Value("${backendUrl}")
-    private String backendUrl;
+    private static String backendUrl;
 
     @Value("${backendUrl}")
-    private String frontendUrl;
+    private static String frontendUrl;
+
+    public static String backendUrl(String path) {
+        return backendUrl;
+    }
+
+    public static String frintendUrl(String path) {
+        return frontendUrl;
+    }
+
 }

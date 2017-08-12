@@ -16,6 +16,8 @@ import java.lang.management.ManagementFactory;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static com.createam.api.config.properties.SharedProperties.backendUrl;
+
 /**
  * Created by lukasz@create.am on 04/08/2017.
  *
@@ -35,11 +37,11 @@ public class HeartbeatService {
         this.sharedProperties = sharedProperties;
     }
 
+    @Profile("heroku")
     @Scheduled(fixedRate = 60000)
     public void sendHeartbeat() {
-        // heartbeat every 60 seconds
-        new RestTemplate()
-                .getForEntity(sharedProperties.getBackendUrl() + "/heartbeat", Heartbeat.class);
+        // heartbeat every 60 seconds to keeps heroku app alive
+        new RestTemplate().getForEntity(backendUrl("/heartbeat"), Heartbeat.class);
     }
 
     public Heartbeat generateHeartbeat(HttpServletRequest request) {
@@ -48,7 +50,6 @@ public class HeartbeatService {
                 .heartbeats(counter.getAndIncrement())
                 .uptime(prepareUptime())
                 .build();
-        log.info(heartbeat.toString());
         return heartbeat;
     }
 

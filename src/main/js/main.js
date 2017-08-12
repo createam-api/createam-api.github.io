@@ -15,6 +15,6 @@ angular.module('createam', [])
             $scope.heartbeat.uptime = 'no uptime available';
             });
             console.log("Request sent!")
-        }, 1000
+        }, 1500
     );
 });
