@@ -15,15 +15,7 @@ public class SharedProperties {
     @Value("${backendUrl}")
     private static String backendUrl;
 
-    @Value("${backendUrl}")
-    private static String frontendUrl;
-
     public static String backendUrl(String path) {
         return backendUrl;
     }
-
-    public static String frintendUrl(String path) {
-        return frontendUrl;
-    }
-
 }
