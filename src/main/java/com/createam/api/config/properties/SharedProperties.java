@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 public class SharedProperties {
 
     @Value("${backendUrl}")
-    private static String backendUrl;
+    private String backendUrl;
 
-    public static String backendUrl(String path) {
-        return backendUrl;
+    public String backendUrl(String path) {
+        return backendUrl + path;
     }
 }
