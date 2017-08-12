@@ -6,7 +6,7 @@ angular.module('createam', [])
     setInterval(function() {
         $http({
             method: 'GET',
-            url: 'https://createam-api.herokuapp.com/heartbeat'
+            url: 'http://createam-api.herokuapp.com/heartbeat'
         }).then(function successCallback(response) {
             $scope.heartbeat = response.data;
         }, function errorCallback(response) {
