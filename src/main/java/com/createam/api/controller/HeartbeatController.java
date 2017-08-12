@@ -34,9 +34,4 @@ public class HeartbeatController {
         log.info("Received heartbeat from " + request.getRemoteAddr());
         return heartbeatService.generateHeartbeat(request);
     }
-
-    @GetMapping(value = "/test", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String test() {
-        return herokuProperties.getTest();
-    }
 }

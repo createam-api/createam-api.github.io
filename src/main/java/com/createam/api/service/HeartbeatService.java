@@ -35,8 +35,9 @@ public class HeartbeatService {
         this.sharedProperties = sharedProperties;
     }
 
-    //@Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 60000)
     public void sendHeartbeat() {
+        // heartbeat every 60 seconds
         new RestTemplate()
                 .getForEntity(sharedProperties.getBackendUrl() + "/heartbeat", Heartbeat.class);
     }

@@ -14,6 +14,8 @@ import javax.sql.DataSource;
 
 /**
  * Created by lukasz@create.am on 10/08/2017.
+ *
+ * DataSource for embedded H2 db for development.
  */
 @Profile("local")
 @Configuration
