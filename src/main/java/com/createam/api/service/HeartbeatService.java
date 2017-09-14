@@ -35,7 +35,7 @@ public class HeartbeatService {
         this.sharedProperties = sharedProperties;
     }
 
-    @Profile("heroku")
+    @Profile({"heroku", "vps"})
     @Scheduled(fixedRate = 60000)
     public void sendHeartbeat() {
         // heartbeat every 60 seconds to keeps heroku app alive
@@ -44,7 +44,7 @@ public class HeartbeatService {
 
     public Heartbeat generateHeartbeat(HttpServletRequest request) {
         Heartbeat heartbeat =  Heartbeat.builder()
-                .message("ahoy! I'am alive")
+                .message("ahoy " + request.getRemoteAddr() + "! I'am alive")
                 .heartbeats(counter.getAndIncrement())
                 .uptime(prepareUptime())
                 .build();

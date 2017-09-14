@@ -18,4 +18,5 @@ public class SharedProperties {
     public String backendUrl(String path) {
         return backendUrl + path;
     }
+
 }

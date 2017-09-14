@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                   http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet dbms="h2,postgresql,mysql" author="lukasz@create.am" id="1">
+        <createSequence sequenceName="hibernate_sequence" startValue="1" incrementBy="1"/>
+        <!--users table-->
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"
+                             unique="true"></constraints>
+            </column>
+            <column name="password" type="varchar(60)">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="enabled" type="boolean">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="token_expired" type="boolean">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="registered" type="datetime">
+                <constraints nullable="false"></constraints>
+            </column>
+        </createTable>
+        <!--roles table-->
+        <createTable tableName="roles">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"
+                             unique="true"></constraints>
+            </column>
+        </createTable>
+        <!--privileges-->
+        <createTable tableName="privileges">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"
+                             unique="true"></constraints>
+            </column>
+        </createTable>
+        <!--user roles cross table-->
+        <createTable tableName="users_roles">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"
+                             references="users(id)"
+                             foreignKeyName="fk_user_roles_user_id"/>
+            </column>
+            <column name="role_id" type="bigint">
+                <constraints nullable="false"
+                             references="roles(id)"
+                             foreignKeyName="fk_users_roles_role_id"/>
+            </column>
+        </createTable>
+        <!--roles privileges cross table-->
+        <createTable tableName="roles_privileges">
+            <column name="role_id" type="bigint">
+                <constraints nullable="false"
+                             references="roles(id)"
+                             foreignKeyName="fk_roles_privileges_role_id"/>
+            </column>
+            <column name="privilege_id" type="bigint">
+                <constraints nullable="false"
+                             references="privileges(id)"
+                             foreignKeyName="fk_roles_privileges_privilege_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
